@@ -1,49 +1,28 @@
 import React, { Component } from "react";
 import { Table, Button, Input, Menu } from "antd";
 import { productMap, statusMap } from "../ProductCatMap";
+import { testData } from "../testData";
 
 export class ProductTable extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: [
-        {
-          key: "1",
-          product_descrip: "03 ORANGE LIQOUR",
-          status: "S",
-          category: "YSC",
-          size: "750ml",
-          price: "22.23"
-        },
-        {
-          key: "2",
-          product_descrip: "1+1=3 CAVA BRUT NV",
-          status: "L",
-          category: "IHP",
-          size: "750ml",
-          price: 15.15
-        },
-        {
-          key: "3",
-          product_descrip: "14 HANDS BRUT",
-          status: "I",
-          category: "IHP",
-          size: "750ml",
-          price: 15.99
-        }
-      ],
+      data: testData,
       columns: [
         {
           title: "Product Name",
           dataIndex: "product_descrip",
           width: 200,
-          key: "product_descrip"
+          key: "product_descrip",
+          render: (productName) => (
+            <>{productName.replace(/(\d{1,5}ml)|(\d{1,5}\sml)/, "")}</>
+          )
         },
         {
           title: "Status",
           dataIndex: "status",
-          width: 50,
+          width: 125,
           key: "status",
           render: (statusCode) => <>{statusMap[statusCode]}</>
         },
@@ -58,7 +37,7 @@ export class ProductTable extends Component {
           title: "Size",
           dataIndex: "size",
           key: "size",
-          width: 50
+          width: 20
         },
         {
           title: "Price",
@@ -90,8 +69,8 @@ export class ProductTable extends Component {
         <Input
           size="large"
           onKeyUp={this.filter}
-          placeholder="Search For Utah DABC Product"
-          style={{ width: "50%" }}
+          placeholder="Search For Utah Liquor Store Products"
+          style={{ width: "50%", marginBottom: 20 }}
         ></Input>
         <Table
           dataSource={

@@ -9,14 +9,16 @@ const App = () => {
   return (
     <Layout>
       <Menu theme="dark" mode="horizontal">
-        <Menu.Item key="1"></Menu.Item>
+        <Menu.Item key="1">
+          <b>Utah</b> Liquor Store Search
+        </Menu.Item>
       </Menu>
-      <Content>
+      <Content style={{ padding: "24px" }}>
         <ProductTable />
       </Content>
       <Footer>
-        Not associated with or run by the Utah Department of Alcoholic Beverage
-        Control. All inventory belongs to DABC.
+        This site is not run or authorized by, or affiliated with the Utah
+        Department of Alcoholic Beverage Control (DABC).
       </Footer>
     </Layout>
   );

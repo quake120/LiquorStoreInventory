@@ -27,7 +27,7 @@ export let productMap = {
 export let statusMap = {
   1: "General Distribution",
   D: "Discontinued (Limited Quantity)",
-  L: "Limited High End Product (At Limited Stores)",
+  L: "Limited High End Product (At Select Stores)",
   X: "Discontinued Limited Product (Only At Select Stores)",
   A: "Product At Select Stores",
   U: "Product Unavailable Shortly",
