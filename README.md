@@ -1,2 +1,2 @@
-# LiquorStoreInventory
+# ComputerHardwareDB
 Created with CodeSandbox
