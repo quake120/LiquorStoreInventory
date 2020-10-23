@@ -51,12 +51,25 @@ export class ProductTable extends Component {
     };
   }
 
+  filterMap = (tableData) => {
+    if (productMap[tableData] !== undefined) {
+      return productMap[tableData];
+    } else if (statusMap[tableData] !== undefined) {
+      return statusMap[tableData];
+    } else {
+      return tableData;
+    }
+  };
+
   filter = (event) => {
     let searchTerm = event.target.value;
 
     let filteredData = this.state.data.filter((d) =>
       Object.keys(d).some((k) =>
-        String(d[k]).toLowerCase().includes(searchTerm.toLowerCase())
+        //String(d[k]).toLowerCase().includes(searchTerm.toLowerCase())
+        String(this.filterMap(d[k]))
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
       )
     );
 
