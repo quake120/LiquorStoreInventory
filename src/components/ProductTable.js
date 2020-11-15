@@ -1,54 +1,24 @@
 import React, { Component } from "react";
 import { Table, Button, Input, Menu } from "antd";
-import { productMap, statusMap } from "../ProductCatMap";
-import { testData } from "../testData";
+import { columns } from "./columns";
+
+import { getAllInventory } from "../api/Firebase";
 
 export class ProductTable extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: testData,
-      columns: [
-        {
-          title: "Product Name",
-          dataIndex: "product_descrip",
-          width: 200,
-          key: "product_descrip",
-          render: (productName) => (
-            <>{productName.replace(/(\d{1,5}ml)|(\d{1,5}\sml)/, "")}</>
-          )
-        },
-        {
-          title: "Status",
-          dataIndex: "status",
-          width: 125,
-          key: "status",
-          render: (statusCode) => <>{statusMap[statusCode]}</>
-        },
-        {
-          title: "Category",
-          dataIndex: "category",
-          width: 30,
-          key: "category",
-          render: (categoryCode) => <>{productMap[categoryCode]}</>
-        },
-        {
-          title: "Size",
-          dataIndex: "size",
-          key: "size",
-          width: 20
-        },
-        {
-          title: "Price",
-          dataIndex: "price",
-          key: "price",
-          width: 25,
-          render: (price) => <>{`$` + price}</>
-        }
-      ],
-      filteredData: null
+      data: [],
+      columns: columns,
+      filteredData: null,
     };
+  }
+
+  async componentDidMount() {
+    var data = await getAllInventory();
+    console.log(data);
+    this.setState({ data: data.data });
   }
 
   filterMap = (tableData) => {

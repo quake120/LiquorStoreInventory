@@ -17,7 +17,7 @@ const App = () => {
         <ProductTable />
       </Content>
       <Footer>
-        This site is not run or authorized by, or affiliated with the Utah
+        This site is not run, authorized by, or affiliated with the Utah
         Department of Alcoholic Beverage Control (DABC).
       </Footer>
     </Layout>
